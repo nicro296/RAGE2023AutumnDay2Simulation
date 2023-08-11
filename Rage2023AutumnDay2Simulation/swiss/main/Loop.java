@@ -8,14 +8,34 @@ import tournament.SwissTournament;
 
 public class Loop {
 
+	/**
+	 * カウントするパターン
+	 * A．5-1プレイヤー全て
+	 * B．5-1かつ初戦の相手が早期リタイア
+	 * C．5-1かつ2戦目の相手が早期リタイア
+	 * D．5-1かつ初戦,2戦目の相手共に早期リタイア
+	 */
 	final int pattern = 4;
+	/**
+	 * 回戦数
+	 */
 	final int round = 6;
-	
+	/**
+	 * 5-1プレイヤーの数
+	 * n5_1[i][j] i = パターン(上記参照), j = 敗北した回戦数
+	 */
 	int[][] n5_1 = new int[pattern][round];
+	/**
+	 * top32の5-1プレイヤーの数
+	 * n5_1[i][j] i = パターン(上記参照), j = 敗北した回戦数
+	 */
 	int[][] n5_1top32 = new int[pattern][round];
 	
 	public static void main(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
-		final int loop = 500;
+		/**
+		 * 自分でのコードの見やすさ優先でアルゴリズム的にはだめだめなので時間がかかります。
+		 */
+		final int loop = 10000;
 		final int players = 600;
 		new Loop(loop, players);
 	}
@@ -24,8 +44,10 @@ public class Loop {
 		for(int i=0; i<loop; i++) {
 			if(i%100 == 0) System.out.println("loop[" + i + "]");
 			final SwissTournament tour = new SwissTournament(playerNumber, this.round);
+			//どれかひとつ
 //			final PlayerPoints pps = tour.simulation1();
 			final PlayerPoints pps = tour.simulation2();
+//			final PlayerPoints pps = tour.simulation3();
 			this.addCount(pps);
 		}
 		this.view();

@@ -66,6 +66,17 @@ public class SwissTournament {
 	}
 	public PlayerPoints simulation2() throws FileNotFoundException, NoSuchAlgorithmException {
 		this.nextRound(0D);
+		this.nextRound(0D);
+		this.nextRound(0D);
+		this.nextRound(0D);
+		this.nextRound(0D);
+		this.nextRound(0D);
+		final List<PlayerPoint> points = this.makePlayerPoint();
+		PlayerPoints pps = new PlayerPoints(points, this.maxRound);
+		return pps;
+	}
+	public PlayerPoints simulation3() throws FileNotFoundException, NoSuchAlgorithmException {
+		this.nextRound(0D);
 		this.nextRound(0.4D);
 		this.nextRound(0.2D);
 		this.nextRound(0D);
@@ -74,7 +85,6 @@ public class SwissTournament {
 		final List<PlayerPoint> points = this.makePlayerPoint();
 		PlayerPoints pps = new PlayerPoints(points, this.maxRound);
 		return pps;
-		
 	}
 	/**
 	 * 
